@@ -14,6 +14,10 @@ public class EventHandler {
 
         final boolean hasPermission = PermissionAPI.hasPermission(event.getPlayer(), "uptileschunklimit.nolimit");
 
+        if(event.getBlockSnapshot().getCurrentBlock().getBlock().getLocalizedName().equals("Sign")){
+            return;
+        }
+
         if(!hasPermission){
             if(event.getBlockSnapshot().getCurrentBlock().getBlock().hasTileEntity()){
                 if(event.getWorld().getChunkFromBlockCoords(event.getPos()).getTileEntityMap().size() > Config.perChunkLimit){
